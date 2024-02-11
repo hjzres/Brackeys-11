@@ -6,8 +6,8 @@ namespace Utils
     {
         private T _instance;
         public T Instance => _instance;
-        
-        private void Awake()
+
+        protected virtual void Awake()
         {
             if (_instance != null)
             {
