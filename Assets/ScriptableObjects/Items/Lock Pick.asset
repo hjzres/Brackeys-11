@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 687a2b76d5718d54faf576cf160bb4a1, type: 3}
+  m_Script: {fileID: 11500000, guid: cb673d9359e8f6b40a066b7828c31c4f, type: 3}
   m_Name: Lock Pick
   m_EditorClassIdentifier: 
-  itemName: 
   itemImage: {fileID: 0}
-  itemDescription: 
+  itemDescription: If you don't have a key, you can use the lock pick to open the
+    door
