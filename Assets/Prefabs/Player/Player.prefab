@@ -151,7 +151,11 @@ GameObject:
   - component: {fileID: 6097288151287583375}
   - component: {fileID: 588165017329436038}
   - component: {fileID: 3803176562411569491}
+<<<<<<< Updated upstream
   - component: {fileID: 7357597938849793698}
+=======
+  - component: {fileID: 40157613949251498}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -283,7 +287,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
   fovTransitionSpeed: 100
+<<<<<<< Updated upstream
 --- !u!114 &7357597938849793698
+=======
+--- !u!114 &40157613949251498
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
