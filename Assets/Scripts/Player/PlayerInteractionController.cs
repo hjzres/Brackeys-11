@@ -1,37 +1,39 @@
-using System;
-using UnityEngine;
 using Interaction;
+using UnityEngine;
 
-public class PlayerInteractionController : MonoBehaviour
+namespace Player
 {
-    public float maxDistance = 3f;
-
-    private Camera _cam;
-
-    private void Start()
+    public class PlayerInteractionController : MonoBehaviour
     {
-        _cam = GetComponentInChildren<Camera>();
-    }
+        public float maxDistance = 3f;
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
+        private Camera _cam;
+
+        private void Start()
         {
-            AttemptInteraction();
+            _cam = GetComponentInChildren<Camera>();
         }
-    }
 
-    private void AttemptInteraction()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, maxDistance))
+        private void Update()
         {
-            // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
-            var inter = hit.transform.gameObject.GetComponent<IInteractable>();
-
-            inter?.Interact();
+            if (Input.GetMouseButtonDown(0))
+            {
+                AttemptInteraction();
+            }
         }
+
+        private void AttemptInteraction()
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out hit, maxDistance))
+            {
+                // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
+                var inter = hit.transform.gameObject.GetComponent<IInteractable>();
+
+                inter?.Interact();
+            }
         
-        Debug.DrawRay(_cam.transform.position, _cam.transform.forward * maxDistance, Color.green);
+            Debug.DrawRay(_cam.transform.position, _cam.transform.forward * maxDistance, Color.green);
+        }
     }
 }

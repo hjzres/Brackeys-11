@@ -151,6 +151,11 @@ GameObject:
   - component: {fileID: 6097288151287583375}
   - component: {fileID: 588165017329436038}
   - component: {fileID: 3803176562411569491}
+<<<<<<< Updated upstream
+  - component: {fileID: 7357597938849793698}
+=======
+  - component: {fileID: 40157613949251498}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -259,7 +264,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6325691451253293992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca8d6b9823ec9e243ad7b5b7152a8fe1, type: 3}
+  m_Script: {fileID: 11500000, guid: 297170b4f68c1cf4086420459d8f9c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 1.5
@@ -277,8 +282,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 6325691451253293992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 566205c6bb7ea7e48a5ca93e603036a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 7600f505cf8c6cd479b51685ef3b212e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
   fovTransitionSpeed: 100
+<<<<<<< Updated upstream
+--- !u!114 &7357597938849793698
+=======
+--- !u!114 &40157613949251498
+>>>>>>> Stashed changes
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6325691451253293992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6baed88e42fb95438f2c7ada5ab4808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 3
