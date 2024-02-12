@@ -12,7 +12,7 @@
 			"Queue" = "Geometry"
 			"RenderPipeline" = "UniversalPipeline"
 		}
-
+	
 		HLSLINCLUDE
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 		ENDHLSL
