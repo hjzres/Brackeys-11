@@ -42,7 +42,10 @@ namespace Player
             _cam.transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
             transform.Rotate(Vector3.up, mouseX);
 
-            _cam.fieldOfView += Mathf.Clamp(_targetFov - _cam.fieldOfView, -fovTransitionSpeed * Time.deltaTime, fovTransitionSpeed * Time.deltaTime);
+            float deltaFov = _targetFov - _cam.fieldOfView;
+            float maxChange = fovTransitionSpeed * Time.deltaTime;
+            
+            _cam.fieldOfView += Mathf.Clamp(deltaFov, -maxChange, maxChange);
         }
     }
 }
