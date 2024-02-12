@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 6097288151287583375}
   - component: {fileID: 588165017329436038}
   - component: {fileID: 3803176562411569491}
+  - component: {fileID: 7357597938849793698}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -259,7 +260,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6325691451253293992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f11a37e26719ddc2abe90ac94ef81e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 297170b4f68c1cf4086420459d8f9c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 1.5
@@ -277,8 +278,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6325691451253293992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e87075cd01a158d3e8b7ddf2bc9e3c81, type: 3}
+  m_Script: {fileID: 11500000, guid: 7600f505cf8c6cd479b51685ef3b212e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
-  fovTransitionSpeed: 200
+  fovTransitionSpeed: 100
+--- !u!114 &7357597938849793698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6325691451253293992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6baed88e42fb95438f2c7ada5ab4808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 3
