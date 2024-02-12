@@ -11,6 +11,8 @@ namespace Player
         [Header("Run")]
         [SerializeField] private float runSpeed = 3f;
         [SerializeField] private float runFov = 1.5f;
+        
+        [Header("Jump")]
         [SerializeField] private float jumpHeight = 3f;
 
         [Header("Gravity")]
