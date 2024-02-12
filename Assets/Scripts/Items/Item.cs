@@ -1,8 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using ScriptableObjects;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+namespace Items
 {
-    public ItemScriptableObject ItemScriptableObject;
+    public class Item : MonoBehaviour
+    {
+        public ItemScriptableObject itemScriptableObject;
+    }
 }

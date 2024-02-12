@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Gas : Item
+namespace Items
 {
-    public float GasAmount;
+    public class Gas : Item
+    {
+        public float gasAmount;
+    }
 }
