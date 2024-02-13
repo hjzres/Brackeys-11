@@ -150,9 +150,9 @@ GameObject:
   - component: {fileID: 2733949604329962977}
   - component: {fileID: 7645276315973319948}
   - component: {fileID: 3286530189819719340}
-  - component: {fileID: 6532463056295091535}
-  - component: {fileID: 5137428085341233556}
-  - component: {fileID: 3488020364795407852}
+  - component: {fileID: 1937208539263453538}
+  - component: {fileID: 6541153045352017411}
+  - component: {fileID: 4685628937245265450}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -275,7 +275,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6532463056295091535
+--- !u!114 &1937208539263453538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3867783372242654188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f5eb94473895b64b8b84abd10334870, type: 3}
+  m_Script: {fileID: 11500000, guid: 9666b449c44598b40a791e60bde92f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 1.5
@@ -293,7 +293,7 @@ MonoBehaviour:
   runFov: 1.5
   jumpHeight: 3
   gravity: -10
---- !u!114 &5137428085341233556
+--- !u!114 &6541153045352017411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -302,11 +302,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3867783372242654188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db67ea156097bb5448add6abf4ff3851, type: 3}
+  m_Script: {fileID: 11500000, guid: bfce35e1bef099e4c863c24b6e4f823a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 3
---- !u!114 &3488020364795407852
+--- !u!114 &4685628937245265450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3867783372242654188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5e85ff2e78099a4eaf719704e039111, type: 3}
+  m_Script: {fileID: 11500000, guid: 1be565ee07e8e8948b77332b3ed683da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 1
