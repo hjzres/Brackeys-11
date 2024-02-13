@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -12,7 +13,7 @@ namespace Rooms
 
         [NonSerialized] public RoomID Parent;
 
-        [Header("Logic")]
+        [Header("Logic")] 
         [SerializeField] private Room destinationRoom;
         [SerializeField] private PathwayID destinationPathway;
         [SerializeField] private PathwayID[] validIds;
@@ -22,7 +23,7 @@ namespace Rooms
         [SerializeField] private Camera portalCamera;
 
         private RenderTexture _renderTexture;
-        private Plane _thisPortalPlane;
+        private List<PathwayTraveller> _trackedTravellers;
 
         public Room DestinationRoom => destinationRoom;
         public PathwayID DestinationPathway => destinationPathway;
@@ -31,7 +32,8 @@ namespace Rooms
         private void Start()
         {
             _renderTexture = CreateRenderTexture();
-            _thisPortalPlane = new Plane(transform.forward, transform.position);
+            _trackedTravellers = new List<PathwayTraveller>();
+
             screen.material.mainTexture = _renderTexture;
             portalCamera.targetTexture = _renderTexture;
             portalCamera.enabled = false;
@@ -44,7 +46,8 @@ namespace Rooms
                 return;
             }
 
-            if (_renderTexture == null || _renderTexture.width != Screen.width || _renderTexture.height != Screen.height)
+            if (_renderTexture == null || _renderTexture.width != Screen.width ||
+                _renderTexture.height != Screen.height)
             {
                 if (_renderTexture != null)
                 {
@@ -55,11 +58,12 @@ namespace Rooms
             }
 
             Pathway outPath = RoomManager.Instance.GetDestinationPathway(this);
+            Plane thisPortalPlane = new Plane(transform.forward, transform.position);
 
             Transform outPathTransform = outPath.transform;
             Transform mainCamTransform = mainCamera.transform;
             Vector3 mainCamPos = mainCamTransform.position;
-            
+
             Vector3 relativePosition = transform.InverseTransformPoint(mainCamPos);
             relativePosition = Vector3.Scale(relativePosition, new Vector3(-1, 1, -1));
             portalCamera.transform.position = outPathTransform.TransformPoint(relativePosition);
@@ -71,9 +75,9 @@ namespace Rooms
             // Set the camera's oblique view frustum.
             Vector3 forward = outPathTransform.forward;
             int direction = Math.Sign(Vector3.Dot((mainCamPos - transform.position).normalized, forward));
-            float dstFromPortal = _thisPortalPlane.GetDistanceToPoint(mainCamPos);
-            
+            float dstFromPortal = thisPortalPlane.GetDistanceToPoint(mainCamPos);
             Plane p = new Plane(direction * forward, outPathTransform.position - forward * dstFromPortal * 0.5f);
+            
             Vector4 clipPlane = new Vector4(p.normal.x, p.normal.y, p.normal.z, p.distance);
             Vector4 clipPlaneCameraSpace = Matrix4x4.Transpose(Matrix4x4.Inverse(portalCamera.worldToCameraMatrix)) * clipPlane;
             portalCamera.projectionMatrix = mainCamera.CalculateObliqueMatrix(clipPlaneCameraSpace);
@@ -97,19 +101,66 @@ namespace Rooms
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!_inUse)
+            if (!other.TryGetComponent(out PathwayTraveller traveller))
             {
-                _inUse = true;
-            }
-            else
-            {
-                _inUse = false;
                 return;
             }
-            
+
+            OnTravellerEnterPortal(traveller);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (!other.TryGetComponent(out PathwayTraveller traveller))
+            {
+                return;
+            }
+
+            _trackedTravellers.Remove(traveller);
+        }
+
+        private void LateUpdate()
+        {
             Pathway outPath = RoomManager.Instance.GetDestinationPathway(this);
             Transform outTransform = outPath.transform;
-            Transform otherTransform = other.transform;
+
+            for (var i = 0; i < _trackedTravellers.Count; i++)
+            {
+                var traveller = _trackedTravellers[i];
+                Transform travellerT = traveller.transform;
+
+                Vector3 offsetFromPortal = travellerT.position - transform.position;
+                int portalSide = Math.Sign(Vector3.Dot(offsetFromPortal, transform.forward));
+                int portalSideOld = Math.Sign(Vector3.Dot(traveller.previousOffset, transform.forward));
+
+                // Teleport the traveller if it has crossed from one side of the portal to the other
+                if (portalSide != portalSideOld)
+                {
+                    Teleport(traveller.transform, outTransform);
+                    // Can't rely on OnTriggerEnter/Exit to be called next frame since it depends on when FixedUpdate runs
+                    outPath.OnTravellerEnterPortal(traveller);
+                    _trackedTravellers.RemoveAt(i);
+                    i--;
+                }
+                else
+                {
+                    traveller.previousOffset = offsetFromPortal;
+                }
+            }
+        }
+
+        private void OnTravellerEnterPortal(PathwayTraveller traveller)
+        {
+            if (!_trackedTravellers.Contains(traveller))
+            {
+                traveller.previousOffset = traveller.transform.position - transform.position;
+                _trackedTravellers.Add(traveller);
+            }
+        }
+
+        private void Teleport(Transform subject, Transform outTransform)
+        {
+            Transform otherTransform = subject.transform;
 
             // Update position of object.
             Vector3 relativePos = transform.InverseTransformPoint(otherTransform.position);
@@ -124,7 +175,7 @@ namespace Rooms
             Physics.SyncTransforms();
 
             // Update velocity of rigidbody.
-            if (other.gameObject.TryGetComponent(out Rigidbody rb))
+            if (subject.gameObject.TryGetComponent(out Rigidbody rb))
             {
                 Vector3 relativeVel = transform.InverseTransformDirection(rb.velocity);
                 relativeVel = HalfTurn * relativeVel;
