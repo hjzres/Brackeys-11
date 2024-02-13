@@ -25,12 +25,6 @@ namespace Rooms
                 r.GoEnabled = false;
             }
         }
-
-        public void GoThroughPathway(Pathway p)
-        {
-            // todo: naive solution, testing needed
-            player.position = GetDestinationPathway(p).transform.position;
-        }
         
         public void Swap(RoomID original, RoomID swapped)
         {

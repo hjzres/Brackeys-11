@@ -12,6 +12,8 @@
 			"Queue" = "Geometry"
 			"RenderPipeline" = "UniversalPipeline"
 		}
+		
+		Cull Off
 	
 		HLSLINCLUDE
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
