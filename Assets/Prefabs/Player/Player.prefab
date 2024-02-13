@@ -284,7 +284,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3867783372242654188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 297170b4f68c1cf4086420459d8f9c50, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f5eb94473895b64b8b84abd10334870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 1.5
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3867783372242654188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6baed88e42fb95438f2c7ada5ab4808, type: 3}
+  m_Script: {fileID: 11500000, guid: db67ea156097bb5448add6abf4ff3851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 3
@@ -315,8 +315,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3867783372242654188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7600f505cf8c6cd479b51685ef3b212e, type: 3}
+  m_Script: {fileID: 11500000, guid: f5e85ff2e78099a4eaf719704e039111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
-  fovTransitionSpeed: 100
+  mouseSensitivity: 1
+  fovTransitionSpeed: 1
