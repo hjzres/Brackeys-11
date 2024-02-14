@@ -15,3 +15,18 @@ public class GeneratorEditor : Editor
         }
     }
 }
+
+[CustomEditor(typeof(RandomizeTerrainHeights))]
+public class TerrainHeightEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        RandomizeTerrainHeights generator = (RandomizeTerrainHeights)target;
+        DrawDefaultInspector();
+
+        if (GUILayout.Button("Generate Heights"))
+        {
+            generator.GenerateHeights();
+        }
+    }
+}
