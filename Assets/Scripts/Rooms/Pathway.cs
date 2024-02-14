@@ -13,14 +13,14 @@ namespace Rooms
 
         [NonSerialized] public RoomID Parent;
 
-        [Header("Logic")] 
-        [SerializeField] private Room destinationRoom;
+        [Header("Logic")] [SerializeField] private Room destinationRoom;
         [SerializeField] private PathwayID destinationPathway;
         [SerializeField] private PathwayID[] validIds;
 
-        [Header("Rendering")] 
-        [SerializeField] private MeshRenderer screen;
+        [Header("Rendering")] [SerializeField] private MeshRenderer screen;
         [SerializeField] private Camera portalCamera;
+        [SerializeField] private float obliqueClippingPlaneOffsetMultiplier = 0.5f;
+        [SerializeField] private float screenThicknessMul = 1.5f;
 
         private RenderTexture _renderTexture;
         private List<PathwayTraveller> _trackedTravellers;
@@ -37,6 +37,11 @@ namespace Rooms
             screen.material.mainTexture = _renderTexture;
             portalCamera.targetTexture = _renderTexture;
             portalCamera.enabled = false;
+
+            if (Math.Abs(transform.localScale.z - 1) > 0.01f)
+            {
+                Debug.LogWarning($"Pathway of name '{name}' has a scale that is not 1 on the z index");
+            }
         }
 
         public void Render(ScriptableRenderContext ctx, Camera mainCamera)
@@ -58,16 +63,19 @@ namespace Rooms
             }
 
             Pathway outPath = RoomManager.Instance.GetDestinationPathway(this);
-            Plane thisPortalPlane = new Plane(transform.forward, transform.position);
-
             Transform outPathTransform = outPath.transform;
             Transform mainCamTransform = mainCamera.transform;
             Vector3 mainCamPos = mainCamTransform.position;
+            Vector3 normal = transform.forward;
 
+            Plane thisPortalPlane = new Plane(normal, screen.bounds.ClosestPoint(mainCamPos));
+
+            // Set portal camera position
             Vector3 relativePosition = transform.InverseTransformPoint(mainCamPos);
             relativePosition = Vector3.Scale(relativePosition, new Vector3(-1, 1, -1));
             portalCamera.transform.position = outPathTransform.TransformPoint(relativePosition);
 
+            // Set portal camera rotation
             Vector3 relativeRot = transform.InverseTransformDirection(mainCamTransform.forward);
             relativeRot = Vector3.Scale(relativeRot, new Vector3(-1, 1, -1));
             portalCamera.transform.forward = outPathTransform.TransformDirection(relativeRot);
@@ -76,16 +84,22 @@ namespace Rooms
             Vector3 forward = outPathTransform.forward;
             int direction = Math.Sign(Vector3.Dot((mainCamPos - transform.position).normalized, forward));
             float dstFromPortal = thisPortalPlane.GetDistanceToPoint(mainCamPos);
-            Plane p = new Plane(direction * forward, outPathTransform.position - forward * dstFromPortal * 0.5f);
-            
+            Plane p = new Plane(direction * forward,
+                outPathTransform.position - forward * dstFromPortal * obliqueClippingPlaneOffsetMultiplier);
+
             Vector4 clipPlane = new Vector4(p.normal.x, p.normal.y, p.normal.z, p.distance);
-            Vector4 clipPlaneCameraSpace = Matrix4x4.Transpose(Matrix4x4.Inverse(portalCamera.worldToCameraMatrix)) * clipPlane;
+            Vector4 clipPlaneCameraSpace =
+                Matrix4x4.Transpose(Matrix4x4.Inverse(portalCamera.worldToCameraMatrix)) * clipPlane;
             portalCamera.projectionMatrix = mainCamera.CalculateObliqueMatrix(clipPlaneCameraSpace);
-            
+
+            ProtectScreenFromClipping(mainCamera, portalCamera.transform.position);
+
             // Render the camera to its render target.
             outPath.screen.enabled = false;
             UniversalRenderPipeline.RenderSingleCamera(ctx, portalCamera);
             outPath.screen.enabled = true;
+
+            ProtectScreenFromClipping(mainCamera, mainCamPos);
         }
 
         private RenderTexture CreateRenderTexture()
@@ -123,13 +137,14 @@ namespace Rooms
         {
             Pathway outPath = RoomManager.Instance.GetDestinationPathway(this);
             Transform outTransform = outPath.transform;
+            Vector3 normal = transform.forward;
 
             for (var i = 0; i < _trackedTravellers.Count; i++)
             {
-                var traveller = _trackedTravellers[i];
-                Transform travellerT = traveller.transform;
+                PathwayTraveller traveller = _trackedTravellers[i];
+                Transform travellerTransform = traveller.transform;
 
-                Vector3 offsetFromPortal = travellerT.position - transform.position;
+                Vector3 offsetFromPortal = travellerTransform.position - transform.position;
                 int portalSide = Math.Sign(Vector3.Dot(offsetFromPortal, transform.forward));
                 int portalSideOld = Math.Sign(Vector3.Dot(traveller.previousOffset, transform.forward));
 
@@ -160,17 +175,17 @@ namespace Rooms
 
         private void Teleport(Transform subject, Transform outTransform)
         {
-            Transform otherTransform = subject.transform;
+            Transform subjectTransform = subject.transform;
 
             // Update position of object.
-            Vector3 relativePos = transform.InverseTransformPoint(otherTransform.position);
+            Vector3 relativePos = transform.InverseTransformPoint(subjectTransform.position);
             relativePos = HalfTurn * relativePos;
-            otherTransform.position = outTransform.TransformPoint(relativePos);
+            subjectTransform.position = outTransform.TransformPoint(relativePos);
 
             // Update rotation of object.
-            Quaternion relativeRot = Quaternion.Inverse(transform.rotation) * otherTransform.rotation;
+            Quaternion relativeRot = Quaternion.Inverse(transform.rotation) * subjectTransform.rotation;
             relativeRot = HalfTurn * relativeRot;
-            otherTransform.rotation = outTransform.rotation * relativeRot;
+            subjectTransform.rotation = outTransform.rotation * relativeRot;
 
             Physics.SyncTransforms();
 
@@ -181,6 +196,20 @@ namespace Rooms
                 relativeVel = HalfTurn * relativeVel;
                 rb.velocity = outTransform.TransformDirection(relativeVel);
             }
+        }
+
+        // ReSharper disable Unity.InefficientPropertyAccess
+        private void ProtectScreenFromClipping(Camera playerCam, Vector3 viewPoint)
+        {
+            float halfHeight = playerCam.nearClipPlane * Mathf.Tan(playerCam.fieldOfView * 0.5f * Mathf.Deg2Rad);
+            float halfWidth = halfHeight * playerCam.aspect;
+            float dstToNearClipPlaneCorner = new Vector3(halfWidth, halfHeight, playerCam.nearClipPlane).magnitude;
+            float screenThickness = dstToNearClipPlaneCorner * screenThicknessMul;
+
+            Transform screenT = screen.transform;
+            bool camFacingSameDirAsPortal = Vector3.Dot(transform.forward, transform.position - viewPoint) > 0;
+            screenT.localScale = new Vector3(screenT.localScale.x, screenT.localScale.y, screenThickness);
+            screenT.localPosition = Vector3.forward * screenThickness * ((camFacingSameDirAsPortal) ? 0.5f : -0.5f);
         }
     }
 }
