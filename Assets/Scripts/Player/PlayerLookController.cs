@@ -33,6 +33,8 @@ namespace Player
 
         private void Update()
         {
+            if (!Application.isFocused) return;
+            
             var mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             var mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
