@@ -55,5 +55,9 @@ public class MeshGenerator : MonoBehaviour
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.RecalculateNormals();
+
+        /*Terrain terrain = FindObjectOfType<Terrain>();
+        float[,] heights = new float[,] { { 0, .1f, 0, .1f }, { 0, 0, .1f, .1f } }; // use perlin values for heights
+        terrain.terrainData.SetHeights(500, 500, heights);*/
     }
 }
