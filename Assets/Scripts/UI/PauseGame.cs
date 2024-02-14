@@ -1,7 +1,8 @@
 using UnityEngine;
 
-namespace UI{
-        public class PauseGame : MonoBehaviour
+namespace UI {
+    
+    public class PauseGame : MonoBehaviour 
     {
         public static bool IsPaused;
         [SerializeField] private GameObject pauseMenu;
