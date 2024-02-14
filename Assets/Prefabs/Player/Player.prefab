@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4565766580502007870}
   - component: {fileID: 8222910253062408588}
   - component: {fileID: 3806289893708653369}
+  - component: {fileID: 1774720898509915230}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -137,6 +138,18 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &1774720898509915230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386041671485887076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e4703f9e7c4a0ebecd6a196236e994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3867783372242654188
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,6 +166,7 @@ GameObject:
   - component: {fileID: 6532463056295091535}
   - component: {fileID: 5137428085341233556}
   - component: {fileID: 3488020364795407852}
+  - component: {fileID: 43107165773038154}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -284,12 +298,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3867783372242654188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96012849d3ccb7e4d9ebf002389f44f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 297170b4f68c1cf4086420459d8f9c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 1.5
+  walkSpeed: 10
   walkFov: 1
-  runSpeed: 3
+  runSpeed: 13
   runFov: 1.5
   jumpHeight: 3
   gravity: -10
@@ -302,10 +316,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3867783372242654188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99f8d5ed9a655e843aacc2781fb72971, type: 3}
+  m_Script: {fileID: 11500000, guid: d6baed88e42fb95438f2c7ada5ab4808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 3
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &3488020364795407852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,8 +332,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 3867783372242654188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e4c24e2cdca412429beb369a289eb52, type: 3}
+  m_Script: {fileID: 11500000, guid: 7600f505cf8c6cd479b51685ef3b212e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
-  fovTransitionSpeed: 100
+  mouseSensitivity: 2
+  fovTransitionSpeed: 20
+--- !u!114 &43107165773038154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867783372242654188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d66b8c0cab43e8bd5b90b412cbac5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousOffset: {x: 0, y: 0, z: 0}
