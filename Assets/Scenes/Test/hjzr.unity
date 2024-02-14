@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099d2aedab9c2054aa06e153b4036358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 2086029115}
+  text: {fileID: 0}
 --- !u!1 &525318826
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,6 +2031,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722097074}
   m_CullTransparentMesh: 1
+--- !u!1 &849995937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3867783372242654188, guid: 51250d987044ebd4dba30214675ce4d6, type: 3}
+  m_PrefabInstance: {fileID: 984308868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &849995946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849995937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdef2ff55b269824ab711c7eb67d39b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 1392394262}
 --- !u!1 &898698789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,7 +2164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099d2aedab9c2054aa06e153b4036358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 1953401468}
+  text: {fileID: 0}
 --- !u!1 &960729017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,7 +2358,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3867783372242654188, guid: 51250d987044ebd4dba30214675ce4d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 849995946}
   m_SourcePrefab: {fileID: 100100000, guid: 51250d987044ebd4dba30214675ce4d6, type: 3}
 --- !u!1 &997982079
 GameObject:
@@ -2562,7 +2583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099d2aedab9c2054aa06e153b4036358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 631619567}
+  text: {fileID: 0}
 --- !u!1 &1149327621
 GameObject:
   m_ObjectHideFlags: 0
@@ -3311,7 +3332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099d2aedab9c2054aa06e153b4036358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 408290490}
+  text: {fileID: 0}
 --- !u!1 &1387454228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3805,6 +3826,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: resumeScene
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1392394262}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

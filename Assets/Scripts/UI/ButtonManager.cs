@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UI.PauseGame;
 
 public class ButtonManager : MonoBehaviour
 {   
     public void resumeScene(){
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
+        IsPaused = false;
     }
 
     public void changeScene(string sceneName)

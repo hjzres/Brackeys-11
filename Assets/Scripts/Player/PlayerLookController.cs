@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using static UI.PauseGame;
 
 namespace Player
 {
@@ -33,6 +35,7 @@ namespace Player
 
         private void Update()
         {
+            if(IsPaused) return;
             var mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             var mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
