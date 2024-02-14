@@ -137,7 +137,6 @@ namespace Rooms
         {
             Pathway outPath = RoomManager.Instance.GetDestinationPathway(this);
             Transform outTransform = outPath.transform;
-            Vector3 normal = transform.forward;
 
             for (var i = 0; i < _trackedTravellers.Count; i++)
             {
