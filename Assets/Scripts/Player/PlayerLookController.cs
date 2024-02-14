@@ -33,7 +33,7 @@ namespace Player
 
         private void Update()
         {
-            
+            if (PauseGame.IsPaused) return;
             if (!Application.isFocused) return;
             
             var mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
