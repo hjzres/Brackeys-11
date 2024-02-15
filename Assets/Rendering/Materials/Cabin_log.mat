@@ -128,7 +128,7 @@ Material:
     - _ReceiveShadows: 1
     - _RotX: 0
     - _RotY: 0
-    - _RotZ: 270
+    - _RotZ: 0
     - _Rotation: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
