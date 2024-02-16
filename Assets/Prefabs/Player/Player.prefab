@@ -66,7 +66,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -305,8 +305,8 @@ MonoBehaviour:
   walkFov: 1
   runSpeed: 13
   runFov: 1.5
-  jumpHeight: 3
-  gravity: -10
+  jumpHeight: 3.5
+  gravity: -15
 --- !u!114 &5137428085341233556
 MonoBehaviour:
   m_ObjectHideFlags: 0
