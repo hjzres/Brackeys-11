@@ -1,5 +1,6 @@
 using UI;
 using UnityEngine;
+using Input = Utils.Input;
 
 namespace Player
 {
@@ -37,8 +38,8 @@ namespace Player
             if (PauseGame.IsPaused) return;
             if (!Application.isFocused) return;
             
-            var mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-            var mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+            var mouseX = UnityEngine.Input.GetAxis("Mouse X") * mouseSensitivity;
+            var mouseY = UnityEngine.Input.GetAxis("Mouse Y") * mouseSensitivity;
 
             _xRotation -= mouseY;
             _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
