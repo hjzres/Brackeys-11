@@ -1,4 +1,5 @@
 using UnityEngine;
+using Input = Utils.Input;
 
 namespace Player
 {
@@ -52,15 +53,15 @@ namespace Player
 
         void HandleJump()
         {
-            if (Input.GetButtonDown("Jump") && _controller.isGrounded)
+            if (Input.Jump() && _controller.isGrounded)
             {
                 _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             }
         }
 
         void DetermineHorizontalVelocity() {
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");   
+            float x = Input.XMovement();
+            float z = Input.ZMovement();   
         
             Vector3 velH = transform.right * x + transform.forward * z;
             if (velH.magnitude > 1)
@@ -70,7 +71,7 @@ namespace Player
 
             float speed = walkSpeed;
             _lookController.FovMultiplier = walkFov;
-            if (Input.GetKey(KeyCode.LeftShift)) {
+            if (Input.Sprint()) {
                 speed = runSpeed;
                 _lookController.FovMultiplier = runFov;
             }

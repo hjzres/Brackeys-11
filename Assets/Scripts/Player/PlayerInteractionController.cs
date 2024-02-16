@@ -1,6 +1,7 @@
 using System;
 using Interaction;
 using UnityEngine;
+using Input = Utils.Input;
 
 namespace Player
 {
@@ -33,7 +34,7 @@ namespace Player
             {
                 obj = hit.transform.gameObject;
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.Interact())
                 {
                     // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
                     var inter = obj.GetComponent<IInteractable>();
