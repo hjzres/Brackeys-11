@@ -6463,7 +6463,7 @@ GameObject:
   - component: {fileID: 23219123587456159}
   - component: {fileID: 33086827742899816}
   m_Layer: 0
-  m_Name: DomeOff
+  m_Name: Dome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7542,7 +7542,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1058b9ee8b578ea4289e90f29957ba09, type: 2}
+  - {fileID: 2100000, guid: f0f64fd429c0be941b116b456e305693, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
