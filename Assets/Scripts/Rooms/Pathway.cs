@@ -66,9 +66,8 @@ namespace Rooms
             Transform outPathTransform = outPath.transform;
             Transform mainCamTransform = mainCamera.transform;
             Vector3 mainCamPos = mainCamTransform.position;
-            Vector3 normal = transform.forward;
 
-            Plane thisPortalPlane = new Plane(normal, screen.bounds.ClosestPoint(mainCamPos));
+            Plane thisPortalPlane = new Plane(transform.forward, screen.bounds.ClosestPoint(mainCamPos));
 
             // Set portal camera position
             Vector3 relativePosition = transform.InverseTransformPoint(mainCamPos);
