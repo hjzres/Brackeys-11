@@ -31,9 +31,6 @@
             "m_Id": "ad8c349c0b4e41789bb2658a4e0f23d1"
         },
         {
-            "m_Id": "9fcd431564fd43f1be6e851356cfc99b"
-        },
-        {
             "m_Id": "e46f6266f78a4c4da2746c0bf3eec175"
         },
         {
@@ -1851,10 +1848,10 @@
     "m_Guid": {
         "m_GuidSerialized": "8503caeb-ade7-4555-b070-b6acdd0d2c4a"
     },
-    "m_Name": "RotX",
+    "m_Name": "Rotation X",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "RotX",
-    "m_DefaultReferenceName": "_RotX",
+    "m_RefNameGeneratedByDisplayName": "Rotation X",
+    "m_DefaultReferenceName": "_Rotation_X",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -1865,10 +1862,10 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": 0.0,
-    "m_FloatType": 0,
+    "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
-        "y": 1.0
+        "y": 360.0
     }
 }
 
@@ -1877,17 +1874,7 @@
     "m_Type": "UnityEditor.ShaderGraph.CategoryData",
     "m_ObjectId": "18b596e299054f7ca1c7e70218b82495",
     "m_Name": "",
-    "m_ChildObjectList": [
-        {
-            "m_Id": "182808ddb6674dd4b93732c36e9d3e6c"
-        },
-        {
-            "m_Id": "9369718f58254c25aaf902a311da2466"
-        },
-        {
-            "m_Id": "6c273bd2ee7d4b8e988b86d2e90664b5"
-        }
-    ]
+    "m_ChildObjectList": []
 }
 
 {
@@ -2261,7 +2248,13 @@
             "m_Id": "4c74767dbd734163a45f9f431f4fa690"
         },
         {
-            "m_Id": "9fcd431564fd43f1be6e851356cfc99b"
+            "m_Id": "182808ddb6674dd4b93732c36e9d3e6c"
+        },
+        {
+            "m_Id": "9369718f58254c25aaf902a311da2466"
+        },
+        {
+            "m_Id": "6c273bd2ee7d4b8e988b86d2e90664b5"
         }
     ]
 }
@@ -4322,10 +4315,10 @@
     "m_Guid": {
         "m_GuidSerialized": "bcd679fd-d616-42c6-a696-ce5d25c2ad2d"
     },
-    "m_Name": "RotZ",
+    "m_Name": "Rotation Z",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "RotZ",
-    "m_DefaultReferenceName": "_RotZ",
+    "m_RefNameGeneratedByDisplayName": "Rotation Z",
+    "m_DefaultReferenceName": "_Rotation_Z",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -4336,10 +4329,10 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": 0.0,
-    "m_FloatType": 0,
+    "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
-        "y": 1.0
+        "y": 360.0
     }
 }
 
@@ -5356,10 +5349,10 @@
     "m_Guid": {
         "m_GuidSerialized": "cc0333cb-8c40-4206-9e0c-870af767c6ce"
     },
-    "m_Name": "RotY",
+    "m_Name": "Rotation Y",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "RotY",
-    "m_DefaultReferenceName": "_RotY",
+    "m_RefNameGeneratedByDisplayName": "Rotation Y",
+    "m_DefaultReferenceName": "_Rotation_Y",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -5370,10 +5363,10 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": 0.0,
-    "m_FloatType": 0,
+    "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
-        "y": 1.0
+        "y": 360.0
     }
 }
 
@@ -5578,7 +5571,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "9b88ccbc94c84922b34eb9feaf1c2a1c",
     "m_Id": 0,
-    "m_DisplayName": "RotX",
+    "m_DisplayName": "Rotation X",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -5649,34 +5642,6 @@
         "m_Guid": ""
     },
     "m_DefaultType": 3
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "9fcd431564fd43f1be6e851356cfc99b",
-    "m_Guid": {
-        "m_GuidSerialized": "19bba023-0564-4c8d-af70-cc412da676e9"
-    },
-    "m_Name": "Rotation",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Rotation",
-    "m_DefaultReferenceName": "_Rotation",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 0.0,
-    "m_FloatType": 1,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 360.0
-    }
 }
 
 {
@@ -7641,7 +7606,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "ecc00c0aab244805b639bf9bce504723",
     "m_Id": 0,
-    "m_DisplayName": "RotY",
+    "m_DisplayName": "Rotation Y",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -8093,7 +8058,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "ff3412bab2c14cc0bb7abe2c86e2773e",
     "m_Id": 0,
-    "m_DisplayName": "RotZ",
+    "m_DisplayName": "Rotation Z",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
