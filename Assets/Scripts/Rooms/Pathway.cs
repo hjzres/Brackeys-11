@@ -62,11 +62,17 @@ namespace Rooms
                 _renderTexture = CreateRenderTexture();
             }
 
+            
             Pathway outPath = RoomManager.Instance.GetDestinationPathway(this);
+
+            if (outPath == null)
+            {
+                return;
+            }
+            
             Transform outPathTransform = outPath.transform;
             Transform mainCamTransform = mainCamera.transform;
             Vector3 mainCamPos = mainCamTransform.position;
-
             Plane thisPortalPlane = new Plane(transform.forward, screen.bounds.ClosestPoint(mainCamPos));
 
             // Set portal camera position
@@ -135,6 +141,12 @@ namespace Rooms
         private void LateUpdate()
         {
             Pathway outPath = RoomManager.Instance.GetDestinationPathway(this);
+            
+            if (outPath == null)
+            {
+                return;
+            }
+            
             Transform outTransform = outPath.transform;
 
             for (var i = 0; i < _trackedTravellers.Count; i++)
