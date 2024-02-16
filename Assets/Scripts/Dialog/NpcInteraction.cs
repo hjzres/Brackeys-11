@@ -16,7 +16,6 @@ namespace Dialog
         {
             _dialogBox = GameObject.Find("Dialog Box").GetComponent<DialogBoxController>();
             _audioSource = GetComponent<AudioSource>();
-            Debug.Log(_dialogBox);
         }
 
         public void Interact()
