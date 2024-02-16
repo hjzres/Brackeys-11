@@ -2029,7 +2029,7 @@ GameObject:
   - component: {fileID: 1001993499}
   - component: {fileID: 1001993498}
   - component: {fileID: 1001993497}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2623,7 +2623,7 @@ GameObject:
   - component: {fileID: 1116872598}
   - component: {fileID: 1116872597}
   - component: {fileID: 1116872596}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2945,17 +2945,9 @@ MonoBehaviour:
   m_Mesh: {fileID: 1438473827}
   m_VersionIndex: 8623
   m_IsSelectable: 1
-  m_SelectedFaces: 01000000
-  m_SelectedEdges:
-  - a: 6
-    b: 7
-  - a: 7
-    b: 5
-  - a: 5
-    b: 4
-  - a: 4
-    b: 6
-  m_SelectedVertices: 06000000070000000500000004000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!4 &1116872601
 Transform:
   m_ObjectHideFlags: 0
