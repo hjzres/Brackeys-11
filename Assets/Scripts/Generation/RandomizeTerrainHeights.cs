@@ -19,6 +19,9 @@ public class RandomizeTerrainHeights : MonoBehaviour
         print(tDB);
         print(ttDB);
 
+        int xbills = (580 - (580 % 50)) / 50;
+        int newVar = 580 - (xbills * 50);
+        print(newVar);
         /*
         GameObject terrainParent = new GameObject("New Terrain", typeof(Terrain));
         terrainParent.transform.position = startPosition;
