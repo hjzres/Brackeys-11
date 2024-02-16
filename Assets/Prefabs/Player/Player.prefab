@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4565766580502007870}
   - component: {fileID: 8222910253062408588}
   - component: {fileID: 3806289893708653369}
+  - component: {fileID: 1774720898509915230}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -65,7 +66,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -137,6 +138,18 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &1774720898509915230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386041671485887076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e4703f9e7c4a0ebecd6a196236e994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3867783372242654188
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,9 +163,10 @@ GameObject:
   - component: {fileID: 2733949604329962977}
   - component: {fileID: 7645276315973319948}
   - component: {fileID: 3286530189819719340}
-  - component: {fileID: 1937208539263453538}
-  - component: {fileID: 6541153045352017411}
-  - component: {fileID: 4685628937245265450}
+  - component: {fileID: 6532463056295091535}
+  - component: {fileID: 5137428085341233556}
+  - component: {fileID: 3488020364795407852}
+  - component: {fileID: 43107165773038154}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -287,13 +301,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9666b449c44598b40a791e60bde92f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 1.5
+  walkSpeed: 10
   walkFov: 1
-  runSpeed: 3
+  runSpeed: 13
   runFov: 1.5
-  jumpHeight: 3
-  gravity: -10
---- !u!114 &6541153045352017411
+  jumpHeight: 3.5
+  gravity: -15
+--- !u!114 &5137428085341233556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,7 +320,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 3
---- !u!114 &4685628937245265450
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 64
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,5 +334,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be565ee07e8e8948b77332b3ed683da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 1
-  fovTransitionSpeed: 1
+  mouseSensitivity: 2
+  fovTransitionSpeed: 20
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867783372242654188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d66b8c0cab43e8bd5b90b412cbac5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousOffset: {x: 0, y: 0, z: 0}
