@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RoomSpecific
 {
-    public class AutoDoors : MonoBehaviour
+    public class AutoDoor : MonoBehaviour
     {
         [SerializeField] private MeshCollider doorWing;
         [SerializeField] private Pathway portal;
