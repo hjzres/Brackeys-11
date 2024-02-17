@@ -117,7 +117,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 3888302060398719438}
   - component: {fileID: 456020126948726853}
   - component: {fileID: 5769966005968931222}
+  - component: {fileID: 3600605636853880042}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -457,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6baed88e42fb95438f2c7ada5ab4808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 3
+  maxDistance: 5
   interactableLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -488,3 +489,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   previousOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &3600605636853880042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867783372242654188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bf15cf91624af593de02badf5ed623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

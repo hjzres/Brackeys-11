@@ -9,7 +9,6 @@ namespace Rooms
     public class Pathway : MonoBehaviour
     {
         private static bool _inUse;
-        private static readonly Quaternion HalfTurn = Quaternion.Euler(0.0f, 180.0f, 0.0f);
 
         [NonSerialized] public RoomID Parent;
 
@@ -86,15 +85,14 @@ namespace Rooms
             portalCamera.transform.forward = outPathTransform.TransformDirection(relativeRot);
 
             // Set the camera's oblique view frustum.
-            // Vector3 forward = outPathTransform.forward;
-            // int direction = Math.Sign(Vector3.Dot((mainCamPos - transform.position).normalized, forward));
-            // float dstFromPortal = thisPortalPlane.GetDistanceToPoint(mainCamPos);
-            // Plane p = new Plane(direction * forward, outPathTransform.position - forward * dstFromPortal * obliqueClippingPlaneOffsetMultiplier);
-            //
-            // Vector4 clipPlane = new Vector4(p.normal.x, p.normal.y, p.normal.z, p.distance);
-            // Vector4 clipPlaneCameraSpace =
-            //     Matrix4x4.Transpose(Matrix4x4.Inverse(portalCamera.worldToCameraMatrix)) * clipPlane;
-            // portalCamera.projectionMatrix = mainCamera.CalculateObliqueMatrix(clipPlaneCameraSpace);
+            Vector3 forward = outPathTransform.forward;
+            int direction = Math.Sign(Vector3.Dot((mainCamPos - transform.position).normalized, transform.forward));
+            float dstFromPortal = thisPortalPlane.GetDistanceToPoint(mainCamPos);
+            Plane p = new Plane(direction * forward, outPathTransform.position - forward * dstFromPortal * obliqueClippingPlaneOffsetMultiplier);
+            
+            Vector4 clipPlane = new Vector4(p.normal.x, p.normal.y, p.normal.z, p.distance);
+            Vector4 clipPlaneCameraSpace = Matrix4x4.Transpose(Matrix4x4.Inverse(portalCamera.worldToCameraMatrix)) * clipPlane;
+            portalCamera.projectionMatrix = mainCamera.CalculateObliqueMatrix(clipPlaneCameraSpace);
             
             ProtectScreenFromClipping(mainCamera, portalCamera.transform.position);
 
@@ -160,7 +158,7 @@ namespace Rooms
                 // Teleport the traveller if it has crossed from one side of the portal to the other
                 if (portalSide != portalSideOld)
                 {
-                    Teleport(traveller.transform, outTransform);
+                    RoomManager.Instance.Teleport(transform, traveller.transform, outTransform, outPath);
                     // Can't rely on OnTriggerEnter/Exit to be called next frame since it depends on when FixedUpdate runs
                     outPath.OnTravellerEnterPortal(traveller);
                     _trackedTravellers.RemoveAt(i);
@@ -181,32 +179,7 @@ namespace Rooms
                 _trackedTravellers.Add(traveller);
             }
         }
-
-        private void Teleport(Transform subject, Transform outTransform)
-        {
-            Transform subjectTransform = subject.transform;
-
-            // Update position of object.
-            Vector3 relativePos = transform.InverseTransformPoint(subjectTransform.position);
-            relativePos = HalfTurn * relativePos;
-            subjectTransform.position = outTransform.TransformPoint(relativePos);
-
-            // Update rotation of object.
-            Quaternion relativeRot = Quaternion.Inverse(transform.rotation) * subjectTransform.rotation;
-            relativeRot = HalfTurn * relativeRot;
-            subjectTransform.rotation = outTransform.rotation * relativeRot;
-
-            Physics.SyncTransforms();
-
-            // Update velocity of rigidbody.
-            if (subject.gameObject.TryGetComponent(out Rigidbody rb))
-            {
-                Vector3 relativeVel = transform.InverseTransformDirection(rb.velocity);
-                relativeVel = HalfTurn * relativeVel;
-                rb.velocity = outTransform.TransformDirection(relativeVel);
-            }
-        }
-
+        
         // ReSharper disable Unity.InefficientPropertyAccess
         private void ProtectScreenFromClipping(Camera playerCam, Vector3 viewPoint)
         {

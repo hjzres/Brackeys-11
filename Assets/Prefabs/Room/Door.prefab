@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.2317957}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2378617532567074204}
@@ -263,7 +263,7 @@ MonoBehaviour:
   validIds: []
   screen: {fileID: 8419559600430987218}
   portalCamera: {fileID: 2619795309666423053}
-  obliqueClippingPlaneOffsetMultiplier: 0.5
+  obliqueClippingPlaneOffsetMultiplier: 0.1
   screenThicknessMul: 1.5
 --- !u!65 &534822321913415349
 BoxCollider:
