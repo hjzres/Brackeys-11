@@ -86,17 +86,16 @@ namespace Rooms
             portalCamera.transform.forward = outPathTransform.TransformDirection(relativeRot);
 
             // Set the camera's oblique view frustum.
-            Vector3 forward = outPathTransform.forward;
-            int direction = Math.Sign(Vector3.Dot((mainCamPos - transform.position).normalized, forward));
-            float dstFromPortal = thisPortalPlane.GetDistanceToPoint(mainCamPos);
-            Plane p = new Plane(direction * forward,
-                outPathTransform.position - forward * dstFromPortal * obliqueClippingPlaneOffsetMultiplier);
-
-            Vector4 clipPlane = new Vector4(p.normal.x, p.normal.y, p.normal.z, p.distance);
-            Vector4 clipPlaneCameraSpace =
-                Matrix4x4.Transpose(Matrix4x4.Inverse(portalCamera.worldToCameraMatrix)) * clipPlane;
-            portalCamera.projectionMatrix = mainCamera.CalculateObliqueMatrix(clipPlaneCameraSpace);
-
+            // Vector3 forward = outPathTransform.forward;
+            // int direction = Math.Sign(Vector3.Dot((mainCamPos - transform.position).normalized, forward));
+            // float dstFromPortal = thisPortalPlane.GetDistanceToPoint(mainCamPos);
+            // Plane p = new Plane(direction * forward, outPathTransform.position - forward * dstFromPortal * obliqueClippingPlaneOffsetMultiplier);
+            //
+            // Vector4 clipPlane = new Vector4(p.normal.x, p.normal.y, p.normal.z, p.distance);
+            // Vector4 clipPlaneCameraSpace =
+            //     Matrix4x4.Transpose(Matrix4x4.Inverse(portalCamera.worldToCameraMatrix)) * clipPlane;
+            // portalCamera.projectionMatrix = mainCamera.CalculateObliqueMatrix(clipPlaneCameraSpace);
+            
             ProtectScreenFromClipping(mainCamera, portalCamera.transform.position);
 
             // Render the camera to its render target.
