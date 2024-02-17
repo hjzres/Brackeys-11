@@ -6,6 +6,8 @@ namespace Rooms
 {
     public class RoomManager : Singleton<RoomManager>
     {
+        private static readonly Quaternion HalfTurn = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+        
         [SerializeField] private Transform player;
         [SerializeField] private Room[] allRooms;
 
@@ -65,6 +67,34 @@ namespace Rooms
             
             // get the destination pathway on the actual room destination
             return actualDest.GetPathwayWithId(pathway.DestinationPathway);
+        }
+        
+        
+        public void Teleport(Transform inTransform, Transform subject, Transform outTransform, Pathway outPath)
+        {
+            Transform subjectTransform = subject.transform;
+
+            // Update position of object.
+            Vector3 relativePos = inTransform.InverseTransformPoint(subjectTransform.position);
+            relativePos = HalfTurn * relativePos;
+            subjectTransform.position = outTransform.TransformPoint(relativePos);
+
+            // Update rotation of object.
+            Quaternion relativeRot = Quaternion.Inverse(inTransform.rotation) * subjectTransform.rotation;
+            relativeRot = HalfTurn * relativeRot;
+            subjectTransform.rotation = outTransform.rotation * relativeRot;
+
+            Physics.SyncTransforms();
+
+            // Update velocity of rigidbody.
+            if (subject.gameObject.TryGetComponent(out Rigidbody rb))
+            {
+                Vector3 relativeVel = inTransform.InverseTransformDirection(rb.velocity);
+                relativeVel = HalfTurn * relativeVel;
+                rb.velocity = outTransform.TransformDirection(relativeVel);
+            }
+
+            _currentRoom = GetRoom(outPath.Parent);
         }
 
         private Room GetRoom(RoomID roomID)
