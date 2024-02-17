@@ -8,7 +8,7 @@ namespace Dialog
     public class NpcInteraction : MonoBehaviour, IInteractable
     {
         public string[] dialog;
-        
+
         private DialogBoxController _dialogBox;
         private AudioSource _audioSource;
 

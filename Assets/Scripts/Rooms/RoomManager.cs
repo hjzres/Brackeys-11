@@ -50,8 +50,18 @@ namespace Rooms
 
         public Pathway GetDestinationPathway(Pathway pathway)
         {
+            if (pathway.DestinationRoom == null)
+            {
+                return null;
+            }
+            
             // resolve any swaps
             Room actualDest = GetRoom(pathway.DestinationRoom.Identifier);
+
+            if (actualDest == null)
+            {
+                return null;
+            }
             
             // get the destination pathway on the actual room destination
             return actualDest.GetPathwayWithId(pathway.DestinationPathway);
@@ -59,7 +69,9 @@ namespace Rooms
 
         private Room GetRoom(RoomID roomID)
         {
-            return _rooms[ResolveRoomId(roomID)];
+            RoomID resolved = ResolveRoomId(roomID);
+            if (!_rooms.ContainsKey(resolved)) return null;
+            return _rooms[resolved];
         }
 
         private RoomID ResolveRoomId(RoomID roomID)
