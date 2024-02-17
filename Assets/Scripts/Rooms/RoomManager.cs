@@ -8,7 +8,6 @@ namespace Rooms
     {
         private static readonly Quaternion HalfTurn = Quaternion.Euler(0.0f, 180.0f, 0.0f);
         
-        [SerializeField] private Transform player;
         [SerializeField] private Room[] allRooms;
 
         private Room _currentRoom;
