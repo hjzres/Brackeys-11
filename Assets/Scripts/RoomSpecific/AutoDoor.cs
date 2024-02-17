@@ -21,8 +21,6 @@ namespace RoomSpecific
 
         private void Update()
         {
-            Debug.Log(_wasOpen);
-            
             Vector3 playerPos = PlayerInstance.Instance.transform.position;
             
             bool inRangeOfDoor = (playerPos - transform.position).magnitude <= range;
