@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Input = Utils.Input;
+using static StaticData;
 
 namespace Player
 {
@@ -51,6 +52,9 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+            walkFov = FOV;
+            runFov = FOV + 0.1f;
+            
             if (_controller.isGrounded && _velocity.y < 0)
             {
                 _velocity.y = -2f;

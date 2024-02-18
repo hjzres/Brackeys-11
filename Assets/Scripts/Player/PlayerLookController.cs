@@ -1,6 +1,7 @@
 using UI;
 using UnityEngine;
 using Input = Utils.Input;
+using static StaticData;
 
 namespace Player
 {
@@ -35,6 +36,8 @@ namespace Player
 
         private void Update()
         {
+            mouseSensitivity = Sensitivity;
+
             if (PauseGame.IsPaused) return;
             if (!Application.isFocused) return;
             
