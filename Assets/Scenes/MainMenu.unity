@@ -3009,8 +3009,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.26500002, y: 0.5914322}
   m_AnchorMax: {x: 0.7027888, y: 0.97771865}
-  m_AnchoredPosition: {x: 0, y: 13}
-  m_SizeDelta: {x: 73.7576, y: -64.8836}
+  m_AnchoredPosition: {x: -0.38920593, y: 18.839096}
+  m_SizeDelta: {x: 72.9792, y: -76.5618}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1338929624
 MonoBehaviour:
@@ -3034,8 +3034,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Chaos Chamber
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f73aa55a207c7a4fa173372aee07859, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f73aa55a207c7a4fa173372aee07859, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 870f885cdc4ae964f88d4b0dc720adc6, type: 2}
+  m_sharedMaterial: {fileID: 932217946969641184, guid: 870f885cdc4ae964f88d4b0dc720adc6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3071,7 +3071,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -53.97
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
