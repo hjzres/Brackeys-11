@@ -37,7 +37,6 @@ namespace Player
         private void Update()
         {
             mouseSensitivity = Sensitivity;
-
             if (PauseGame.IsPaused) return;
             if (!Application.isFocused) return;
             

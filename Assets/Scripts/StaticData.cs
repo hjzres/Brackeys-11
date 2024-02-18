@@ -4,5 +4,5 @@ public static class StaticData
     public static float Volume = 1;
     public static float MusicVolume = 1;
     public static float FOV = 70;
-    public static float Sensitivity = 80;
+    public static float Sensitivity = 1;
 }
