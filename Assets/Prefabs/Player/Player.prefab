@@ -296,6 +296,8 @@ GameObject:
   - component: {fileID: 456020126948726853}
   - component: {fileID: 5769966005968931222}
   - component: {fileID: 3600605636853880042}
+  - component: {fileID: 5286452567272767742}
+  - component: {fileID: 8514687942340761024}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -446,6 +448,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 37ee7b3c5484fae428ecf0bab40d8ee1, type: 3}
   - physicMaterial: {fileID: 13400000, guid: 10e245aa4dabafa48889a26d1c886cd6, type: 2}
     clip: {fileID: 8300000, guid: 09b944bf1b7f7ac4591f2ac8477cb56d, type: 3}
+  - physicMaterial: {fileID: 13400000, guid: a29c91c977bf5624ab30a3553d6e8c2c, type: 2}
+    clip: {fileID: 8300000, guid: f4fe7f84ddb0e074cbf51f0666b15a55, type: 3}
+  - physicMaterial: {fileID: 13400000, guid: baf04d471756984409789449a0e1b3c3, type: 2}
+    clip: {fileID: 8300000, guid: aa0b0e2a2eff5ae48b5b81888df5460c, type: 3}
+  - physicMaterial: {fileID: 13400000, guid: 2947792927c3a99448010718822053c1, type: 2}
+    clip: {fileID: 8300000, guid: 0683f56ce3599244485ef9983fea3e33, type: 3}
 --- !u!114 &3888302060398719438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,3 +509,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bf15cf91624af593de02badf5ed623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5286452567272767742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867783372242654188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871b1069669d4406a6e192104eb277be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8514687942340761024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867783372242654188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdef2ff55b269824ab711c7eb67d39b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}

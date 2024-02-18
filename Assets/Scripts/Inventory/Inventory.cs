@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 
 namespace Inventory
@@ -7,7 +8,6 @@ namespace Inventory
     public class Inventory : MonoBehaviour
     {
         public static event Action<Dictionary<ItemType, int>> OnInvChanged; 
-        public static event Action<ItemType, int> OnItemObtained; 
         
         private Dictionary<ItemType, int> _items;
 
@@ -22,21 +22,28 @@ namespace Inventory
             {
                 _items[itemType] += count;
                 OnInvChanged?.Invoke(_items);
-                OnItemObtained?.Invoke(itemType, count);
+                Notification.ShowMessage("Obtained Item: " + itemType.itemName);
                 return;
             }
             
             _items.Add(itemType, count);
             OnInvChanged?.Invoke(_items);
-            OnItemObtained?.Invoke(itemType, count);
+            Notification.ShowMessage("Obtained Item: " + itemType.itemName);
         }
 
-        public void RemoveItem(ItemType itemType, int count)
+        public bool RemoveItem(ItemType itemType, int count)
         {
-            if (!_items.ContainsKey(itemType)) return;
+            if (!_items.ContainsKey(itemType)) return false;
+            if (_items[itemType] < 1) return false;
+            
             _items[itemType] -= count;
-            if (_items[itemType] <= 0) _items.Remove(itemType);
+            if (_items[itemType] <= 0)
+            {
+                _items.Remove(itemType);
+            }
+            
             OnInvChanged?.Invoke(_items);
+            return true;
         }
     }
 }

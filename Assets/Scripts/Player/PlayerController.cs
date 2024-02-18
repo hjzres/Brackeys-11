@@ -52,8 +52,8 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+            runFov = FOV + runFov - runFov;
             walkFov = FOV;
-            runFov = FOV + 0.1f;
             
             if (_controller.isGrounded && _velocity.y < 0)
             {

@@ -27,7 +27,7 @@ namespace Rooms
         public Room DestinationRoom => destinationRoom;
         public PathwayID DestinationPathway => destinationPathway;
         public PathwayID[] ValidIdentifiers => validIds;
-
+        
         private void Start()
         {
             _renderTexture = CreateRenderTexture();
