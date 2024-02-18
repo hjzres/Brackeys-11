@@ -15,12 +15,12 @@ namespace UI
 
         public void FOVSlider(float fov){
             StaticData.FOV = fov;
-            text.text = fov.ToString();
+            text.text = fov.ToString("0.00");
         }
 
         public void SensitivitySlider(float sense){
             StaticData.Sensitivity = sense;
-            text.text = sense.ToString("0");
+            text.text = sense.ToString("0.00");
         }
 
         public void VolumeSlider(float volume){
