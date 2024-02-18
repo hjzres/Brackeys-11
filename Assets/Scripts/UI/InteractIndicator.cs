@@ -8,6 +8,9 @@ namespace UI
     {
         private Image _image;
 
+        [SerializeField] private Sprite normal;
+        [SerializeField] private Sprite hovered;
+
         private void Start()
         {
             _image = GetComponent<Image>();
@@ -26,7 +29,14 @@ namespace UI
 
         private void UpdateCrosshairs(GameObject obj)
         {
-            _image.enabled = !(obj is null);
+            if (obj is null)
+            {
+                _image.sprite = normal;
+            }
+            else
+            {
+                _image.sprite = hovered;
+            }
         }
     }
 }
