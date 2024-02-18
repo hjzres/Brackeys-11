@@ -16,6 +16,7 @@ namespace RoomSpecific
 
         private void Start()
         {
+            if (portal == null) return;
             portal.gameObject.SetActive(false);
         }
 
@@ -24,9 +25,13 @@ namespace RoomSpecific
             Vector3 playerPos = PlayerInstance.Instance.transform.position;
             
             bool inRangeOfDoor = (playerPos - transform.position).magnitude <= range;
-            Pathway outPath = RoomManager.Instance.GetDestinationPathway(portal);
-            bool inRangeOfOtherPortal = outPath != null &&
-                                        (playerPos - outPath.transform.position).magnitude <= range;
+            bool inRangeOfOtherPortal = false;
+
+            if (portal != null)
+            {
+                Pathway outPath = RoomManager.Instance.GetDestinationPathway(portal);
+                inRangeOfOtherPortal = outPath != null && (playerPos - outPath.transform.position).magnitude <= range;
+            }
 
             if (inRangeOfDoor || inRangeOfOtherPortal)
             {
@@ -48,7 +53,7 @@ namespace RoomSpecific
         {
             if (_inProgress) return;
             _inProgress = true;
-            portal.gameObject.SetActive(true);
+            if (portal != null) portal.gameObject.SetActive(true);
             doorWing.enabled = false;
             doorWing.transform.DOLocalRotate(new Vector3(0, 120, 0), 0.5f)
                 .OnComplete(() =>
@@ -66,7 +71,7 @@ namespace RoomSpecific
             doorWing.transform.DOLocalRotate(new Vector3(0, 0, 0), 0.5f)
                 .OnComplete(() =>
                 {
-                    portal.gameObject.SetActive(false);
+                    if (portal != null) portal.gameObject.SetActive(false);
                     doorWing.enabled = true;
                     _inProgress = false;
                     _wasOpen = false;
