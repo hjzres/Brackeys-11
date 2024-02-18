@@ -20,5 +20,9 @@ namespace UI
         {
             SceneManager.LoadScene(sceneIndex);
         }
+
+        public void Quit(){
+            ChangeScene(1);
+        }
     }
 }
